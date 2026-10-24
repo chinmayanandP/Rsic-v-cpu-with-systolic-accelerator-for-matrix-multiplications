@@ -12,19 +12,51 @@ import numpy as np
 from PIL import Image, ImageOps
 
 
-APPLICATION_DIR = Path(__file__).resolve().parent
-PROJECT_DIR = APPLICATION_DIR.parent
+SCRIPT_FILE = Path(__file__).resolve()
+APPLICATION_DIR = SCRIPT_FILE.parent
+PHASE1_DIR = SCRIPT_FILE.parents[2]
+REPO_ROOT = SCRIPT_FILE.parents[3]
 
-VIVADO_BAT = Path(r"D:\vivado\2026.1\Vivado\bin\vivado.bat")
-TCL_FILE = PROJECT_DIR / "run_grayscale_sim.tcl"
-TESTBENCH_FILE = PROJECT_DIR / "tb_cpu_grayscale_batch.sv"
+RUNTIME_DIR = REPO_ROOT / "build" / "runtime" / "grayscale"
+INPUT_FILE = RUNTIME_DIR / "grayscale_input.txt"
+OUTPUT_FILE = RUNTIME_DIR / "grayscale_output.txt"
+RESULTS_DIR = RUNTIME_DIR / "results"
 
-INPUT_FILE = PROJECT_DIR / "grayscale_input.txt"
-OUTPUT_FILE = PROJECT_DIR / "grayscale_output.txt"
-RESULTS_DIR = APPLICATION_DIR / "riscv_grayscale_results"
+TCL_FILE = PHASE1_DIR / "scripts" / "vivado" / "run_grayscale_sim.tcl"
+TESTBENCH_FILE = (
+    PHASE1_DIR
+    / "testbenches"
+    / "matrix_applications"
+    / "tb_cpu_grayscale_batch.sv"
+)
+PROJECT_FILE = REPO_ROOT / "build" / "vivado" / "phase1_riscv_cpu.xpr"
 
 BATCH_PIXELS = 32
 CLOCK_HZ = 100_000_000
+
+
+def find_vivado():
+    candidates = []
+
+    xilinx_vivado = os.environ.get("XILINX_VIVADO")
+    if xilinx_vivado:
+        candidates.append(
+            Path(xilinx_vivado) / "bin" / "vivado.bat"
+        )
+
+    path_vivado = shutil.which("vivado.bat")
+    if path_vivado:
+        candidates.append(Path(path_vivado))
+
+    candidates.append(
+        Path(r"D:\vivado\2026.1\Vivado\bin\vivado.bat")
+    )
+
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate.resolve()
+
+    return None
 
 
 def select_image():
@@ -199,11 +231,18 @@ def main():
     )
     arguments = parser.parse_args()
 
+    vivado_bat = find_vivado()
+
+    if vivado_bat is None:
+        raise FileNotFoundError(
+            "Vivado was not found. Set XILINX_VIVADO, add Vivado "
+            "to PATH, or install it at the detected fallback path."
+        )
+
     for required in (
-        VIVADO_BAT,
         TCL_FILE,
         TESTBENCH_FILE,
-        PROJECT_DIR / "Project Final riscv.xpr",
+        PROJECT_FILE,
     ):
         if not required.is_file():
             raise FileNotFoundError(
@@ -246,6 +285,7 @@ def main():
     print(f"Matrix jobs: {job_count:,}")
     print("Each job: up to 32x3 multiplied by 3x1")
     print("Vivado launches: 1")
+    print(f"Vivado: {vivado_bat}")
     print("No resizing or cropping.")
     print(f"Output folder: {run_dir}")
     print()
@@ -263,12 +303,15 @@ def main():
 
     completed = subprocess.run(
         [
-            str(VIVADO_BAT),
+            str(vivado_bat),
             "-mode", "batch",
             "-source", str(TCL_FILE),
             "-notrace",
+            "-tclargs",
+            str(INPUT_FILE),
+            str(OUTPUT_FILE),
         ],
-        cwd=str(PROJECT_DIR),
+        cwd=str(REPO_ROOT),
         check=False,
     )
 
