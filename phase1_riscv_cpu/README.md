@@ -105,7 +105,49 @@ The pretrained `.caffemodel` is intentionally excluded because it is a large dow
 - [`results/grayscale`](results/grayscale): 32-pixel, 33-pixel boundary and full-image results
 - [`results/performance`](results/performance): matrix batch-bridge evidence
 
-## Known limitation before portable rerun
+## Portable Windows workflow
 
-The sources were copied from the verified Vivado project into a clean repository layout. Existing Tcl, batch and Python launch scripts may still contain assumptions about the original directory structure. They must be converted to repository-relative paths and regression-tested before this repository is described as one-command reproducible.
+The repository-relative Phase 1 workflow was validated on 24 October 2026 with Vivado 2026.1.
+
+### 1. Create the Python environment
+
+```powershell
+& ".\phase1_riscv_cpu\scripts\windows\setup_python_environment.bat"
+```
+
+The script creates `.venv` at the repository root and installs the packages listed in [`requirements.txt`](applications/image_processing_app/requirements.txt).
+
+### 2. Create the Vivado project
+
+```powershell
+& ".\phase1_riscv_cpu\scripts\windows\create_vivado_project.bat"
+```
+
+Generated project:
+
+```text
+build\vivado\phase1_riscv_cpu.xpr
+```
+
+### 3. Run manual CPU matrix multiplication
+
+```powershell
+& ".\phase1_riscv_cpu\scripts\windows\run_matrix.bat"
+```
+
+### 4. Run the image-processing menu
+
+```powershell
+& ".\phase1_riscv_cpu\applications\image_processing_app\run_image_tools.bat"
+```
+
+The confirmed menu operations are:
+
+1. JPEG compression with RISC-V RTL validation.
+2. Full-image RGB-to-grayscale processing through Vivado/XSim and the RISC-V CPU.
+3. OpenCV-DNN grayscale-to-colour conversion.
+
+Option 3 also requires `models\colorization_release_v2.caffemodel`. See [the model instructions](applications/image_processing_app/models/README.md).
+
+Runtime-generated files are stored below `build\runtime` or ignored application-result directories and are not committed.
 
