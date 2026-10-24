@@ -1,0 +1,38 @@
+RISC-V CPU COLOR JPEG BATCH RESULT
+
+Source image: E:\project\Project Final riscv\jpeg_application\datasets\baboon.tiff
+Test input: E:\project\Project Final riscv\jpeg_application\riscv_jpeg_16x16_input.png
+Compressed JPEG: E:\project\Project Final riscv\jpeg_application\riscv_cpu_color_test_Q70.jpg
+Reconstructed image: E:\project\Project Final riscv\jpeg_application\riscv_cpu_color_test_reconstructed.png
+JPEG quality: 70
+Input resolution: 16x16
+Output resolution: 16x16
+Input PNG size: 810 bytes
+Compressed JPEG size: 752 bytes
+Reconstructed PNG size: 810 bytes
+Input-to-JPEG size ratio: 1.077128:1
+JPEG size change: -7.160%
+PSNR: 24.770247 dB
+Maximum reconstructed pixel error: 60
+Pixel blocks: 4
+Color components: 3
+RISC-V matrix jobs: 24
+First-stage CPU cycles: 1411108
+Second-stage CPU cycles: 1381244
+Total RTL CPU cycles: 2792352
+RTL CPU time at 100 MHz: 27.923520 ms
+Vivado/XSim elapsed time: 103.449 seconds
+Overflow count: 0
+
+PASS: Compressed JPEG file exists
+PASS: Compressed JPEG is not empty
+PASS: JPEG byte data was returned
+PASS: Decoded image resolution is unchanged
+PASS: RISC-V processed four pixel blocks
+PASS: RISC-V processed three color components
+PASS: RISC-V executed 24 matrix jobs
+PASS: No RISC-V matrix overflow
+PASS: CPU cycle count is valid
+PASS: Decoded image quality is valid
+
+STATUS: RISC-V COLOR JPEG BATCH TEST PASSED

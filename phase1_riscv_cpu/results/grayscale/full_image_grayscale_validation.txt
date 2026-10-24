@@ -1,0 +1,27 @@
+RISC-V CPU FULL-IMAGE GRAYSCALE RESULT
+
+Input: C:\Users\chinn\Downloads\WhatsApp Image 2026-10-19 at 9.21.54 PM.jpeg
+Input/output resolution: 1200x1600
+Original file bytes: 146232
+Grayscale PNG bytes: 571363
+Pixels processed by RTL CPU: 1,920,000
+Matrix multiplications: 60,000
+Final job pixels: 32
+Total CPU cycles: 1,363,860,000
+Estimated CPU time at 100 MHz: 13638.600000 ms
+Host/Vivado elapsed time: 27665.950 seconds
+Host processing time: 27671.490 seconds
+Maximum CPU sum error: 0
+Failed pixels: 0
+Overflow: 0
+
+RTL CPU: matrix products and accumulation for every pixel.
+Python: image preparation, reference checking, rounding and saving.
+CPU cycles include the per-job matrix program overhead.
+Reset intervals and host work are excluded from CPU cycles.
+100 MHz is the assumed frequency for the time conversion.
+Host processing time excludes image loading and result viewing.
+PNG output is not guaranteed to be smaller than the input file.
+
+Output image: E:\project\Project Final riscv\jpeg_application\riscv_grayscale_results\gray_run_3nyy60l_\grayscale.png
+STATUS: ALL FULL-IMAGE GRAYSCALE CHECKS PASSED

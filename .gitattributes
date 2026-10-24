@@ -1,0 +1,39 @@
+# Automatically detect text files
+* text=auto
+
+# Hardware and project scripts use LF
+*.sv    text eol=lf
+*.v     text eol=lf
+*.vh    text eol=lf
+*.svh   text eol=lf
+*.xdc   text eol=lf
+*.tcl   text eol=lf
+*.S     text eol=lf
+*.s     text eol=lf
+*.hex   text eol=lf
+*.mem   text eol=lf
+
+# Software and documentation use LF
+*.py    text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+*.csv   text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+
+# Windows command scripts use CRLF
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# Binary files must not receive line-ending conversion
+*.png         binary
+*.jpg         binary
+*.jpeg        binary
+*.tif         binary
+*.tiff        binary
+*.pdf         binary
+*.pptx        binary
+*.npy         binary
+*.caffemodel  binary

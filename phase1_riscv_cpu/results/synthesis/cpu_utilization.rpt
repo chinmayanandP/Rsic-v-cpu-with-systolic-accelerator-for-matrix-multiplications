@@ -1,0 +1,41 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Oct 11 16:44:39 2026
+| Host         : Chinmay running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file {E:/project/Project Final riscv/synthesis_reports/cpu_utilization.rpt}
+| Design       : riscv_cpu
+| Device       : xc7a200tfbg676-2
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------------------+---------------------------+------------+------------+---------+------+------+--------+--------+------------+
+|             Instance             |           Module          | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++----------------------------------+---------------------------+------------+------------+---------+------+------+--------+--------+------------+
+| riscv_cpu                        |                     (top) |       1190 |       1190 |       0 |    0 | 1358 |      0 |      1 |          0 |
+|   (riscv_cpu)                    |                     (top) |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|   u_decode_stage                 |  instruction_decode_stage |        648 |        648 |       0 |    0 |  656 |      0 |      0 |          0 |
+|     id_ex_register_inst          |   id_ex_pipeline_register |        360 |        360 |       0 |    0 |  176 |      0 |      0 |          0 |
+|     register_file_inst           |             register_file |        288 |        288 |       0 |    0 |  480 |      0 |      0 |          0 |
+|   u_execute_stage                | instruction_execute_stage |        152 |        152 |       0 |    0 |  111 |      0 |      0 |          0 |
+|     u_ex_mem_pipeline_register   |  ex_mem_pipeline_register |        152 |        152 |       0 |    0 |  111 |      0 |      0 |          0 |
+|   u_fetch_stage                  |   instruction_fetch_stage |        179 |        179 |       0 |    0 |  291 |      0 |      0 |          0 |
+|     (u_fetch_stage)              |   instruction_fetch_stage |         16 |         16 |       0 |    0 |  150 |      0 |      0 |          0 |
+|     if_id_pipeline_register_inst |   if_id_pipeline_register |        107 |        107 |       0 |    0 |   86 |      0 |      0 |          0 |
+|   u_memory_stage                 |              memory_stage |        211 |        211 |       0 |    0 |  300 |      0 |      1 |          0 |
+|     (u_memory_stage)             |              memory_stage |          1 |          1 |       0 |    0 |  190 |      0 |      0 |          0 |
+|     u_data_memory                |               data_memory |         81 |         81 |       0 |    0 |    2 |      0 |      1 |          0 |
+|     u_mem_wb_pipeline_register   |  mem_wb_pipeline_register |        129 |        129 |       0 |    0 |  108 |      0 |      0 |          0 |
++----------------------------------+---------------------------+------------+------------+---------+------+------+--------+--------+------------+
+
+

@@ -1,0 +1,24 @@
+RISC-V CPU 32x32 GRAYSCALE JPEG DCT RESULT
+
+Source image: E:\project\Project Final riscv\jpeg_application\datasets\baboon.tiff
+Crop size: 32x32
+JPEG block size: 8x8
+Blocks processed: 16
+Matrix multiplications executed by RTL CPU: 32
+JPEG quality: 70
+Q format: Q12
+
+First-stage CPU cycles: 1872534
+Second-stage CPU cycles: 1841016
+Total RTL CPU cycles: 3713550
+RTL CPU time at 100 MHz: 37135500 ns (37.135500 ms)
+Host/Vivado elapsed time: 945.258 seconds
+
+Overflow count: 0
+Maximum CPU-vs-Python coefficient error: 0
+Maximum CPU-vs-OpenCV coefficient error: 1
+Reconstructed-image PSNR: 27.788798 dB
+Maximum reconstructed pixel error: 43
+Original crop: E:\project\Project Final riscv\jpeg_application\riscv_dct_32x32_original.png
+Reconstructed crop: E:\project\Project Final riscv\jpeg_application\riscv_dct_32x32_reconstructed.png
+STATUS: RISC-V CPU 32x32 JPEG DCT TEST PASSED

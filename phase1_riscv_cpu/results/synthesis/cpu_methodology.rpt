@@ -1,0 +1,611 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Oct 11 16:44:55 2026
+| Host         : Chinmay running 64-bit major release  (build 9200)
+| Command      : report_methodology -file {E:/project/Project Final riscv/synthesis_reports/cpu_methodology.rpt}
+| Design       : riscv_cpu
+| Device       : xc7a200tfbg676-2
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max checks: <unlimited>
+             Checks found: 115
++-----------+----------+--------------------------------------------+--------+
+| Rule      | Severity | Description                                | Checks |
++-----------+----------+--------------------------------------------+--------+
+| SYNTH-6   | Warning  | Timing of a RAM block might be sub-optimal | 1      |
+| TIMING-18 | Warning  | Missing input or output delay              | 114    |
++-----------+----------+--------------------------------------------+--------+
+
+2. REPORT DETAILS
+-----------------
+SYNTH-6#1 Warning
+Timing of a RAM block might be sub-optimal  
+The timing for the instance u_memory_stage/u_data_memory/memory_reg, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on external_halt relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on reset relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An output delay is missing on exception_valid_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An output delay is missing on fence_completed_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[0] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[10] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[11] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[12] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[13] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[14] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#11 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[15] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#12 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[16] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#13 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[17] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#14 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[18] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#15 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[19] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#16 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[1] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#17 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[20] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#18 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[21] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#19 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[22] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#20 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[23] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#21 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[24] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#22 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[25] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#23 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[26] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#24 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[27] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#25 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[28] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#26 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[29] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#27 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[2] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#28 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[30] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#29 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[31] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#30 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[3] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#31 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[4] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#32 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[5] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#33 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[6] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#34 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[7] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#35 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[8] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#36 Warning
+Missing input or output delay  
+An output delay is missing on fetch_pc_out[9] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#37 Warning
+Missing input or output delay  
+An output delay is missing on halted_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#38 Warning
+Missing input or output delay  
+An output delay is missing on instruction_retired_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#39 Warning
+Missing input or output delay  
+An output delay is missing on load_use_hazard_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#40 Warning
+Missing input or output delay  
+An output delay is missing on memory_busy_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#41 Warning
+Missing input or output delay  
+An output delay is missing on pipeline_flushed_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#42 Warning
+Missing input or output delay  
+An output delay is missing on pipeline_stalled_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#43 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[0] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#44 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[10] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#45 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[11] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#46 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[12] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#47 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[13] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#48 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[14] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#49 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[15] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#50 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[16] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#51 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[17] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#52 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[18] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#53 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[19] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#54 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[1] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#55 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[20] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#56 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[21] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#57 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[22] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#58 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[23] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#59 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[24] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#60 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[25] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#61 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[26] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#62 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[27] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#63 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[28] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#64 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[29] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#65 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[2] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#66 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[30] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#67 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[31] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#68 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[3] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#69 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[4] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#70 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[5] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#71 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[6] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#72 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[7] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#73 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[8] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#74 Warning
+Missing input or output delay  
+An output delay is missing on redirect_target_out[9] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#75 Warning
+Missing input or output delay  
+An output delay is missing on redirect_valid_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#76 Warning
+Missing input or output delay  
+An output delay is missing on register_write_address_out[0] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#77 Warning
+Missing input or output delay  
+An output delay is missing on register_write_address_out[1] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#78 Warning
+Missing input or output delay  
+An output delay is missing on register_write_address_out[2] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#79 Warning
+Missing input or output delay  
+An output delay is missing on register_write_address_out[3] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#80 Warning
+Missing input or output delay  
+An output delay is missing on register_write_address_out[4] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#81 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[0] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#82 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[10] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#83 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[11] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#84 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[12] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#85 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[13] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#86 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[14] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#87 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[15] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#88 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[16] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#89 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[17] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#90 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[18] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#91 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[19] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#92 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[1] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#93 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[20] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#94 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[21] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#95 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[22] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#96 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[23] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#97 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[24] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#98 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[25] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#99 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[26] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#100 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[27] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#101 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[28] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#102 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[29] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#103 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[2] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#104 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[30] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#105 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[31] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#106 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[3] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#107 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[4] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#108 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[5] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#109 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[6] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#110 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[7] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#111 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[8] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#112 Warning
+Missing input or output delay  
+An output delay is missing on register_write_data_out[9] relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#113 Warning
+Missing input or output delay  
+An output delay is missing on register_write_enable_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+TIMING-18#114 Warning
+Missing input or output delay  
+An output delay is missing on system_event_valid_out relative to the rising and/or falling clock edge(s) of cpu_clk.
+Related violations: <none>
+
+

@@ -1,0 +1,125 @@
+# ============================================================
+# Operating-system files
+# ============================================================
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ============================================================
+# Editors
+# ============================================================
+
+.vscode/
+.idea/
+*.code-workspace
+*~
+*.swp
+*.swo
+
+# ============================================================
+# Python environments and caches
+# ============================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+.venv/
+venv/
+env/
+jpeg_env/
+
+pip-wheel-metadata/
+*.egg-info/
+build/
+dist/
+
+# ============================================================
+# Vivado-generated project data
+# These files are large, machine-specific and reproducible.
+# ============================================================
+
+.Xil/
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+
+xsim.dir/
+webtalk/
+usage_statistics_webtalk.xml
+usage_statistics_webtalk.html
+
+# Vivado logs, journals, databases and checkpoints
+*.jou
+*.log
+*.backup.jou
+*.backup.log
+*.wdb
+*.wcfg
+*.pb
+*.dcp
+*.str
+
+# Generated FPGA files
+*.bit
+*.bin
+*.ltx
+
+# Machine-specific Vivado project file
+# The repository will use a Tcl project-creation script instead.
+*.xpr
+
+# ============================================================
+# Temporary simulation exchange files
+# ============================================================
+
+matrix_input.mem
+matrix_output.txt
+dct_batch_input.mem
+dct_batch_output.txt
+grayscale_input.txt
+grayscale_output.txt
+
+# ============================================================
+# Generated application outputs
+# Verified evidence will be copied separately into phase1 results.
+# ============================================================
+
+output/
+comparison_output/
+riscv_jpeg_results/
+riscv_grayscale_results/
+image_conversion_results/
+
+# ============================================================
+# Large downloaded AI models
+# Provide a download script and checksum instead of committing them.
+# ============================================================
+
+*.caffemodel
+
+# ============================================================
+# Archives and temporary backups
+# ============================================================
+
+*.zip
+*.7z
+*.rar
+*.bak
+*.tmp
+*.temp
+
+# ============================================================
+# Repository-organization working files
+# ============================================================
+
+project_inventory.txt
+organization_manifest*.csv

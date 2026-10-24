@@ -1,0 +1,52 @@
+RISC-V CPU RGB TO GRAYSCALE VERIFICATION
+
+Matrix dimensions: 32x3 multiplied by 3x1
+Matrix multiplications executed: 1
+Pixels tested: 32
+
+Pixel | R G B | CPU sum | Gray | Check
+ 1 |   0   0   0 |     0 |   0 | PASS
+ 2 | 255 255 255 | 65280 | 255 | PASS
+ 3 | 255   0   0 | 19635 |  77 | PASS
+ 4 |   0 255   0 | 38250 | 149 | PASS
+ 5 |   0   0 255 |  7395 |  29 | PASS
+ 6 | 128 128 128 | 32768 | 128 | PASS
+ 7 | 255 255   0 | 57885 | 226 | PASS
+ 8 |   0 255 255 | 45645 | 178 | PASS
+ 9 | 255   0 255 | 27030 | 106 | PASS
+10 |   1   1   1 |   256 |   1 | PASS
+11 | 254 254 254 | 65024 | 254 | PASS
+12 | 100 150 200 | 36000 | 141 | PASS
+13 |   0  19  41 |  4039 |  16 | PASS
+14 |  37  92 150 | 20999 |  82 | PASS
+15 |  74 165   3 | 30535 | 119 | PASS
+16 | 111 238 112 | 47495 | 186 | PASS
+17 | 148  55 221 | 26055 | 102 | PASS
+18 | 185 128  74 | 35591 | 139 | PASS
+19 | 222 201 183 | 52551 | 205 | PASS
+20 |   3  18  36 |  3975 |  16 | PASS
+21 |  40  91 145 | 20935 |  82 | PASS
+22 |  77 164 254 | 37895 | 148 | PASS
+23 | 114 237 107 | 47431 | 185 | PASS
+24 | 151  54 216 | 25991 | 102 | PASS
+25 | 188 127  69 | 35527 | 139 | PASS
+26 | 225 200 178 | 52487 | 205 | PASS
+27 |   6  17  31 |  3911 |  15 | PASS
+28 |  43  90 140 | 20871 |  82 | PASS
+29 |  80 163 249 | 37831 | 148 | PASS
+30 | 117 236 102 | 47367 | 185 | PASS
+31 | 154  53 211 | 25927 | 101 | PASS
+32 | 191 126  64 | 35463 | 139 | PASS
+
+CPU cycles: 22731
+Estimated CPU time at 100 MHz: 0.227310 ms
+Host/Vivado elapsed time: 59.838 seconds
+Maximum CPU sum error: 0
+Overflow flag: 0
+Failed pixels: 0
+
+Cycle count covers the matrix program measured by the testbench.
+It excludes Python preparation, scaling, and file transfers.
+100 MHz is the assumed clock for the CPU-time conversion.
+
+STATUS: ALL RISC-V GRAYSCALE CHECKS PASSED

@@ -1,0 +1,26 @@
+RISC-V CPU COLOR BATCH DCT RESULT
+
+Input image: E:\project\Project Final riscv\jpeg_application\datasets\baboon.tiff
+Original resolution: 512x512
+Test crop resolution: 16x16
+Pixel blocks: 4
+Color components: 3
+Matrix jobs: 24
+First-stage CPU cycles: 1411108
+Second-stage CPU cycles: 1381244
+Total CPU cycles: 2792352
+RTL CPU time at 100 MHz: 27.923520 ms
+Vivado/XSim elapsed time: 100.671 seconds
+Overflow count: 0
+Maximum CPU-vs-Python error: 0
+Maximum CPU-vs-OpenCV error: 1
+
+PASS: Pixel block count is 4
+PASS: Component count is 3
+PASS: Matrix job count is 24
+PASS: No arithmetic overflow
+PASS: CPU matches fixed Python exactly
+PASS: CPU is within 2 of OpenCV
+PASS: CPU cycle count is valid
+
+STATUS: RISC-V COLOR BATCH DCT TEST PASSED

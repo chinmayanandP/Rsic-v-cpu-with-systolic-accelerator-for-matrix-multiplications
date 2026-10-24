@@ -1,0 +1,1 @@
+# The 100 MHz clock is already defined in cpu_timing.xdc.

@@ -1,0 +1,23 @@
+JPEG DCT BACKEND COMPARISON
+OpenCV floating-point DCT versus Q12 fixed-point Python DCT
+
+Image | Mode | Q | OpenCV bytes | Fixed bytes | Size change | OpenCV PSNR | Fixed PSNR | PSNR change
+------------------------------------------------------------------------------------------------------------------------------
+baboon.tiff  | color     | 50 |        64899 |       64444 |     -0.701% |      25.542 dB |     25.540 dB |     -0.002 dB
+baboon.tiff  | color     | 70 |        92683 |       92077 |     -0.654% |      26.908 dB |     26.902 dB |     -0.006 dB
+baboon.tiff  | color     | 90 |       210135 |      207408 |     -1.298% |      31.334 dB |     31.292 dB |     -0.042 dB
+baboon.tiff  | grayscale | 50 |        45667 |       45490 |     -0.388% |      28.216 dB |     28.213 dB |     -0.003 dB
+baboon.tiff  | grayscale | 70 |        62403 |       62221 |     -0.292% |      30.451 dB |     30.445 dB |     -0.006 dB
+baboon.tiff  | grayscale | 90 |       113494 |      113241 |     -0.223% |      36.988 dB |     36.949 dB |     -0.040 dB
+Lena.tiff    | color     | 50 |        30976 |       30566 |     -1.324% |      32.888 dB |     32.883 dB |     -0.005 dB
+Lena.tiff    | color     | 70 |        43576 |       42971 |     -1.388% |      33.969 dB |     33.957 dB |     -0.012 dB
+Lena.tiff    | color     | 90 |        94507 |       93311 |     -1.266% |      36.252 dB |     36.199 dB |     -0.053 dB
+Lena.tiff    | grayscale | 50 |        20844 |       20549 |     -1.415% |      35.742 dB |     35.734 dB |     -0.008 dB
+Lena.tiff    | grayscale | 70 |        29089 |       28666 |     -1.454% |      37.229 dB |     37.216 dB |     -0.013 dB
+Lena.tiff    | grayscale | 90 |        58730 |       57954 |     -1.321% |      40.592 dB |     40.544 dB |     -0.048 dB
+
+Average file-size change: -0.977%
+Average PSNR change: -0.020 dB
+
+Note: host encoding time is software execution time. It is not RISC-V CPU cycle time and is not accelerator performance.
+STATUS: ALL DCT BACKEND COMPARISONS PASSED

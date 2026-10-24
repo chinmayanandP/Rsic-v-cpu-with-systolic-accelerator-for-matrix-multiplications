@@ -1,0 +1,8 @@
+RISC-V CPU MATRIX BATCH BRIDGE TEST
+Jobs requested: 3
+Jobs returned: 3
+PASS: Job 100, cycles=118339, overflow=0
+PASS: Job 101, cycles=120817, overflow=0
+PASS: Job 102, cycles=118851, overflow=0
+Total CPU cycles: 358007
+STATUS: ALL MATRIX BATCH BRIDGE CHECKS PASSED

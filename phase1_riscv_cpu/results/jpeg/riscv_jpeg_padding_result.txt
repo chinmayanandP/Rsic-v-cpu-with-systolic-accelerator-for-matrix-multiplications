@@ -1,0 +1,40 @@
+RISC-V JPEG AUTOMATIC PADDING RESULT
+
+Source image: E:\project\Project Final riscv\jpeg_application\datasets\baboon.tiff
+Test input: E:\project\Project Final riscv\jpeg_application\riscv_padding_19x13_input.png
+Compressed JPEG: E:\project\Project Final riscv\jpeg_application\riscv_padding_19x13_Q70.jpg
+Reconstructed image: E:\project\Project Final riscv\jpeg_application\riscv_padding_19x13_reconstructed.png
+JPEG quality preset: 70 (Balanced)
+Original resolution: 19x13
+Internal padded resolution: 24x16
+Decoded output resolution: 19x13
+Original input size: 775 bytes
+Compressed JPEG size: 797 bytes
+Reconstructed PNG size: 762 bytes
+Compression ratio: 0.972396:1
+Size reduction: -2.839%
+PSNR: 25.355005 dB
+Maximum reconstructed pixel error: 59
+Padded pixel blocks: 6
+Color components: 3
+RISC-V matrix jobs: 36
+First-stage CPU cycles: 2117036
+Second-stage CPU cycles: 2071808
+Total RTL CPU cycles: 4188844
+RTL CPU time at 100 MHz: 41.888440 ms
+Vivado/XSim elapsed time: 129.432 seconds
+Overflow count: 0
+
+PASS: Original width detected correctly
+PASS: Original height detected correctly
+PASS: Width padded automatically to 24
+PASS: Height padded automatically to 16
+PASS: Decoded JPEG keeps the original 19x13 resolution
+PASS: Six padded pixel blocks were processed
+PASS: Three color components were processed
+PASS: Thirty-six CPU matrix jobs were executed
+PASS: No RISC-V matrix overflow occurred
+PASS: Compressed JPEG was created
+PASS: Decoded image quality is valid
+
+STATUS: AUTOMATIC JPEG PADDING TEST PASSED
