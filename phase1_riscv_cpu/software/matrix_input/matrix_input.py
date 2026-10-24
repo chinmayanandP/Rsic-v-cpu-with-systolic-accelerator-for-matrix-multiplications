@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import os
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -20,14 +22,26 @@ N_WORD = 3074
 OVERFLOW_WORD = 3075
 DONE_WORD = 3076
 
-PROJECT_DIR = Path(__file__).resolve().parent
+SCRIPT_FILE = Path(__file__).resolve()
+PHASE1_DIR = SCRIPT_FILE.parents[2]
+REPO_ROOT = SCRIPT_FILE.parents[3]
 
-INPUT_FILE = PROJECT_DIR / "matrix_input.mem"
-OUTPUT_FILE = PROJECT_DIR / "matrix_output.txt"
-TCL_FILE = PROJECT_DIR / "run_matrix_sim.tcl"
+RUNTIME_DIR = REPO_ROOT / "build" / "runtime" / "matrix"
+INPUT_FILE = RUNTIME_DIR / "matrix_input.mem"
+OUTPUT_FILE = RUNTIME_DIR / "matrix_output.txt"
 
-VIVADO_BAT = Path(
-    r"D:\vivado\2026.1\Vivado\bin\vivado.bat"
+TCL_FILE = (
+    PHASE1_DIR
+    / "scripts"
+    / "vivado"
+    / "run_matrix_sim.tcl"
+)
+
+PROJECT_FILE = (
+    REPO_ROOT
+    / "build"
+    / "vivado"
+    / "phase1_riscv_cpu.xpr"
 )
 
 
@@ -160,6 +174,7 @@ def write_memory_file(
     n: int,
 ) -> None:
 
+    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
     memory = [0] * MEMORY_WORDS
 
     flat_a = [
@@ -201,13 +216,49 @@ def write_memory_file(
     )
 
 
+def find_vivado() -> Path | None:
+    candidates: list[Path] = []
+
+    xilinx_vivado = os.environ.get("XILINX_VIVADO")
+    if xilinx_vivado:
+        candidates.append(
+            Path(xilinx_vivado) / "bin" / "vivado.bat"
+        )
+
+    path_vivado = shutil.which("vivado.bat")
+    if path_vivado:
+        candidates.append(Path(path_vivado))
+
+    candidates.append(
+        Path(r"D:\vivado\2026.1\Vivado\bin\vivado.bat")
+    )
+
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate.resolve()
+
+    return None
+
+
 def run_vivado() -> int:
-    if not VIVADO_BAT.is_file():
+    vivado_bat = find_vivado()
+
+    if vivado_bat is None:
         print()
-        print("ERROR: Vivado was not found at:")
-        print(VIVADO_BAT)
+        print("ERROR: Vivado was not found.")
         print(
-            "Update VIVADO_BAT inside matrix_input.py."
+            "Set XILINX_VIVADO, add Vivado to PATH, "
+            "or install it at the detected fallback path."
+        )
+        return 1
+
+    if not PROJECT_FILE.is_file():
+        print()
+        print("ERROR: Portable Vivado project was not found:")
+        print(PROJECT_FILE)
+        print(
+            "Run phase1_riscv_cpu\\scripts\\windows"
+            "\\create_vivado_project.bat first."
         )
         return 1
 
@@ -223,17 +274,23 @@ def run_vivado() -> int:
     print()
     print("Starting Vivado XSim...")
     print("Large matrices can take several minutes.")
+    print(f"Vivado: {vivado_bat}")
+    print(f"Input: {INPUT_FILE}")
+    print(f"Output: {OUTPUT_FILE}")
 
     completed = subprocess.run(
         [
-            str(VIVADO_BAT),
+            str(vivado_bat),
             "-mode",
             "batch",
             "-source",
             str(TCL_FILE),
             "-notrace",
+            "-tclargs",
+            str(INPUT_FILE),
+            str(OUTPUT_FILE),
         ],
-        cwd=PROJECT_DIR,
+        cwd=REPO_ROOT,
         check=False,
     )
 
@@ -260,7 +317,6 @@ def run_vivado() -> int:
     )
 
     return 0
-
 
 def main() -> int:
     parser = argparse.ArgumentParser(
@@ -328,7 +384,7 @@ def main() -> int:
         n,
     )
 
-    print(f"Created: {INPUT_FILE.name}")
+    print(f"Created: {INPUT_FILE}")
 
     if arguments.prepare_only:
         print(
