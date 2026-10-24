@@ -1,38 +1,56 @@
-set project_dir [file dirname [file normalize [info script]]]
-set project_file [file join $project_dir "Project Final riscv.xpr"]
-set testbench_file [file join $project_dir "tb_cpu_grayscale_batch.sv"]
+# Portable full-image grayscale simulation runner.
+set script_dir [file dirname [file normalize [info script]]]
+set repo_root [file normalize [file join $script_dir .. .. ..]]
+set project_file [file join $repo_root build vivado phase1_riscv_cpu.xpr]
 
-if {![file exists $project_file]} {
-    puts stderr "Project not found: $project_file"
+if {[llength $argv] != 2} {
+    puts stderr "ERROR: Expected grayscale input and output file paths."
+    puts stderr "Usage: vivado -mode batch -source run_grayscale_sim.tcl -tclargs INPUT OUTPUT"
     exit 1
 }
 
-if {![file exists $testbench_file]} {
-    puts stderr "Testbench not found: $testbench_file"
+set input_file [file normalize [lindex $argv 0]]
+set output_file [file normalize [lindex $argv 1]]
+
+if {![file exists $project_file]} {
+    puts stderr "ERROR: Generated Vivado project not found:"
+    puts stderr $project_file
+    puts stderr "Run create_vivado_project.bat first."
     exit 1
+}
+
+if {![file exists $input_file]} {
+    puts stderr "ERROR: Grayscale input file not found:"
+    puts stderr $input_file
+    exit 1
+}
+
+file mkdir [file dirname $output_file]
+if {[file exists $output_file]} {
+    file delete -force $output_file
 }
 
 if {[catch {
     open_project $project_file
 
-    # Construct a Tcl list so paths containing spaces stay together.
-    set testbench_list [list $testbench_file]
-
-    if {[llength [get_files -quiet $testbench_list]] == 0} {
-        add_files -fileset sim_1 -norecurse $testbench_list
-    }
-
-    set_property SOURCE_SET sources_1 [get_filesets sim_1]
     set_property top tb_cpu_grayscale_batch [get_filesets sim_1]
     set_property top_lib xil_defaultlib [get_filesets sim_1]
+    set_property SOURCE_SET sources_1 [get_filesets sim_1]
+    set_property xsim.simulate.runtime {0ns} [get_filesets sim_1]
 
+    set simulation_options [format         {-testplusarg GRAYSCALE_INPUT=%s -testplusarg GRAYSCALE_OUTPUT=%s}         $input_file $output_file]
+
+    set_property         -name {xsim.simulate.xsim.more_options}         -value $simulation_options         -objects [get_filesets sim_1]
+
+    update_compile_order -fileset sources_1
     update_compile_order -fileset sim_1
 
-    set_property xsim.simulate.runtime {0ns} [get_filesets sim_1]
+    puts "Vivado project: $project_file"
+    puts "Grayscale input: $input_file"
+    puts "Grayscale output: $output_file"
 
     launch_simulation -mode behavioral
     run all
-
 } error_message]} {
     puts stderr "Grayscale simulation failed: $error_message"
     puts stderr $::errorInfo
@@ -43,4 +61,11 @@ if {[catch {
 
 catch {close_sim}
 close_project
+
+if {![file exists $output_file]} {
+    puts stderr "ERROR: Simulation completed without creating:"
+    puts stderr $output_file
+    exit 1
+}
+
 exit 0
