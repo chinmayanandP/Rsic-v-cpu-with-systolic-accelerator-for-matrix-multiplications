@@ -40,7 +40,7 @@ if {[catch {
 
     set simulation_options [format         {-testplusarg MATRIX_INPUT=%s -testplusarg MATRIX_OUTPUT=%s}         $input_file $output_file]
 
-    set_property xsim.simulate.xsim.more_options         $simulation_options [get_filesets sim_1]
+    set_property -name {xsim.simulate.xsim.more_options} -value $simulation_options -objects [get_filesets sim_1]
 
     update_compile_order -fileset sources_1
     update_compile_order -fileset sim_1
