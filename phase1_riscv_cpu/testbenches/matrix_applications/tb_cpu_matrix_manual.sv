@@ -16,8 +16,8 @@ module tb_cpu_matrix_manual;
 
     localparam integer MAX_CYCLES    = 20000000;
 
-    localparam string INPUT_FILE = "E:/project/Project Final riscv/matrix_input.mem";
-    localparam string OUTPUT_FILE = "E:/project/Project Final riscv/matrix_output.txt";
+    string input_file;
+    string output_file;
 
     logic clk;
     logic reset;
@@ -120,13 +120,25 @@ module tb_cpu_matrix_manual;
         external_halt = 1'b0;
         errors        = 0;
 
+        input_file  = "matrix_input.mem";
+        output_file = "matrix_output.txt";
+
+        if (!$value$plusargs("MATRIX_INPUT=%s", input_file))
+            input_file = "matrix_input.mem";
+
+        if (!$value$plusargs("MATRIX_OUTPUT=%s", output_file))
+            output_file = "matrix_output.txt";
+
+        $display("Matrix input file: %s", input_file);
+        $display("Matrix output file: %s", output_file);
+
         /*
          * Load matrices, dimensions and control values
          * into SoC data memory.
          */
         #1;
         $readmemh(
-            INPUT_FILE,
+            input_file,
             dut.u_data_memory.memory
         );
 
@@ -215,7 +227,7 @@ module tb_cpu_matrix_manual;
          * Open output result file.
          */
         output_handle = $fopen(
-            OUTPUT_FILE,
+            output_file,
             "w"
         );
 
@@ -223,7 +235,7 @@ module tb_cpu_matrix_manual;
             $fatal(
                 1,
                 "Could not create %s",
-                OUTPUT_FILE
+                output_file
             );
         end
 
