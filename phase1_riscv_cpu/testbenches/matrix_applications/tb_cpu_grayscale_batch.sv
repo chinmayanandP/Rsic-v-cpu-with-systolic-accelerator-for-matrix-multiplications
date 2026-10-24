@@ -2,11 +2,8 @@
 
 module tb_cpu_grayscale_batch;
 
-    localparam string INPUT_FILE =
-        "E:/project/Project Final riscv/grayscale_input.txt";
-
-    localparam string OUTPUT_FILE =
-        "E:/project/Project Final riscv/grayscale_output.txt";
+    string input_file;
+    string output_file;
 
     localparam integer MAX_CYCLES = 2000000;
 
@@ -87,15 +84,27 @@ module tb_cpu_grayscale_batch;
     end
 
     initial begin
-        input_handle = $fopen(INPUT_FILE, "r");
+        input_file = "grayscale_input.txt";
+        output_file = "grayscale_output.txt";
+
+        if (!$value$plusargs("GRAYSCALE_INPUT=%s", input_file))
+            input_file = "grayscale_input.txt";
+
+        if (!$value$plusargs("GRAYSCALE_OUTPUT=%s", output_file))
+            output_file = "grayscale_output.txt";
+
+        $display("Grayscale input file: %s", input_file);
+        $display("Grayscale output file: %s", output_file);
+
+        input_handle = $fopen(input_file, "r");
 
         if (input_handle == 0)
-            $fatal(1, "Cannot open %s", INPUT_FILE);
+            $fatal(1, "Cannot open %s", input_file);
 
-        output_handle = $fopen(OUTPUT_FILE, "w");
+        output_handle = $fopen(output_file, "w");
 
         if (output_handle == 0)
-            $fatal(1, "Cannot create %s", OUTPUT_FILE);
+            $fatal(1, "Cannot create %s", output_file);
 
         scan_count = $fscanf(input_handle, "%d", job_count);
 
