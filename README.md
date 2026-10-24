@@ -11,23 +11,68 @@ This repository contains a five-stage RV32I processor, its verification environm
 
 > The current `accelerator_stub.sv` verifies the SoC address window and bus protocol only. It is not the Phase 2 accelerator.
 
-## Architecture
+## Whole-project architecture
+
+This diagram separates the completed Phase 1 CPU baseline from the planned Phase 2 accelerator.
 
 ```mermaid
-flowchart LR
-    IF["IF: Fetch"] --> ID["ID: Decode"]
-    ID --> EX["EX: Execute"]
-    EX --> MEM["MEM: Bus access"]
-    MEM --> WB["WB: Write back"]
-    CTRL["Hazard, forwarding, stall and flush"] --> IF
+flowchart TD
+    APP["Matrix and image workloads"] --> HOST["Host preparation and CPU programs"]
+    HOST --> CPU["Phase 1: verified five-stage RV32I CPU"]
+    CPU --> BUS["Memory-mapped system bus"]
+    BUS --> RAM["Phase 1: data memory"]
+    BUS --> PORT["Accelerator address window"]
+    PORT --> STUB["Phase 1: verified bus stub"]
+    PORT --> ACC["Phase 2: planned systolic accelerator"]
+    ACC --> ARRAY["PE array, buffers and controller"]
+    CPU --> BASE["CPU-only baseline results"]
+    ARRAY --> FAST["CPU + accelerator results"]
+    BASE --> COMPARE["Correctness, cycles, timing and resources"]
+    FAST --> COMPARE
+```
+
+### Phase labels
+
+| Label | Meaning |
+|---|---|
+| Phase 1 — completed | RV32I CPU, pipeline control, system bus, data memory, accelerator stub, applications and verification |
+| Phase 2 — planned | Real memory-mapped systolic-array accelerator, tiling, local buffers and CPU-versus-accelerator comparison |
+| Host software | Image selection, file preparation, reference checking and result presentation; it is not accelerator RTL |
+
+## Phase 1 hardware architecture
+
+```mermaid
+flowchart TD
+    IMEM["Instruction memory"] --> IF["IF: fetch"]
+    IF --> IFID["IF/ID pipeline register"]
+    IFID --> ID["ID: decode and register file"]
+    ID --> IDEX["ID/EX pipeline register"]
+    IDEX --> EX["EX: ALU and branch/jump"]
+    EX --> EXMEM["EX/MEM pipeline register"]
+    EXMEM --> MEM["MEM: load/store and bus FSM"]
+    MEM --> MEMWB["MEM/WB pipeline register"]
+    MEMWB --> WB["WB: result selection and commit"]
+    WB --> ID
+    CTRL["Hazard detection, forwarding, stall and flush"] --> IF
     CTRL --> ID
     CTRL --> EX
+    CTRL --> MEM
     MEM --> BUS["Valid/ready system bus"]
-    BUS --> RAM["16 KiB data memory"]
+    BUS --> DMEM["16 KiB data memory"]
     BUS --> STUB["Phase 1 accelerator stub"]
 ```
 
-The processor uses IF, ID, EX, MEM and WB stages with inter-stage pipeline registers. Pipeline control handles load-use hazards, forwarding, memory wait states, redirects, stalls and flushes. The MEM stage presents a valid/ready request-response interface to the SoC bus.
+### Phase 1 data and control flow
+
+1. **IF** fetches the instruction at the Program Counter and carries PC, PC+4 and instruction state into IF/ID.
+2. **ID** decodes the instruction, reads the register file, creates the immediate and generates control signals.
+3. **EX** selects forwarded operands, performs ALU work and resolves branches or jumps.
+4. **MEM** formats loads/stores and completes valid/ready transactions through the system bus.
+5. **WB** selects ALU, memory or PC+4 data and commits a valid result to the register file.
+6. **Pipeline control** detects load-use hazards, forwards newer values, stalls for memory and flushes wrong-path instructions.
+7. **The system bus** routes CPU requests to data memory or the reserved accelerator window.
+
+See the [complete Phase 1 module documentation](docs/module_documentation/README.md) for the What, Why, How, inputs, outputs, connections and testbench of every RTL module.
 
 ## Phase 1 contents
 
@@ -149,7 +194,7 @@ Phase 2 will implement the real memory-mapped matrix accelerator with control/st
 
 See [Phase 2 plan](phase2_systolic_accelerator/README.md).
 
-## Current reproducibility note
+## Reproducibility status
 
-The repository preserves the tested RTL, testbenches, programs and original execution scripts. Some copied Tcl, batch and Python scripts still refer to the original local Vivado project layout. A portable repository-relative Vivado project-creation script is the next repository task; until it is added and regression-tested, the existing scripts should be treated as preserved Phase 1 sources rather than universally portable launchers.
+The repository-relative Windows flow is complete and was verified with Vivado/XSim 2026.1. It includes automatic Python-environment setup, generated Vivado-project creation, manual CPU matrix execution and the integrated image-processing launcher. See the [Phase 1 portable workflow](phase1_riscv_cpu/README.md#portable-windows-workflow).
 
