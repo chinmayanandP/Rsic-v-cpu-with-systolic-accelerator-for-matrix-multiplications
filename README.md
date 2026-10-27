@@ -1,4 +1,6 @@
-# Pipelined RV32I RISC-V CPU with Matrix Workloads and a Planned Systolic Accelerator
+# Design of a Soft-Core Processor with an Integrated Systolic Array Accelerator for Matrix Computations
+
+
 
 This repository contains a five-stage RV32I processor, its verification environment, matrix-multiplication software, and image-processing application experiments. Phase 1 implements and verifies matrix multiplication on the RISC-V CPU. Phase 2 will replace the current accelerator stub with a real systolic-array accelerator and compare both implementations under the same workloads.
 
